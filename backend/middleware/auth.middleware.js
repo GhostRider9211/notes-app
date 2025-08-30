@@ -1,15 +1,15 @@
-import User from '../models/User.js';
+import User from "../models/user.model.js";
 import jwt from 'jsonwebtoken';
 
 export const protect = async (req,res,next)=>{
-    const {authoriszation} = req.headers;
+    const {authorization} = req.headers;
 
 
-    if(!authoriszation|| !authoriszation.startswith("Bearer ")){
+    if(!authorization|| !authorization.startsWith("Bearer ")){
         return res.status(401).json({message:"Not authorised,no token "});
     }
 
-    const token = authoriszation.split(" ")[1];
+    const token = authorization.split(" ")[1];
 
     try {
         const decoded = jwt.verify(token,process.env.JWT_SECRET);

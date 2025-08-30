@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon backend/server.js",
+    "dev":"nodemon server.js",
     "build":"npm install && npm install --prefix frontend && npm run build --prefix frontend",
     "start":"node server.js"
   },
