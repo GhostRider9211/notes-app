@@ -16,7 +16,7 @@ const Register = ({ setUser }) => {
     setError("");
 
     try {
-      const reponse = await axios.post("/api/users/register", {
+      const response = await axios.post("/api/users/register", {
         username,
         email,
         password,
