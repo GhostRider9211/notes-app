@@ -1,7 +1,7 @@
 import {useEffect,useState,useCallback} from "react";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
-
+import NoteModal from "./NoteModal";
 import {MdModeEditOutline,MdDelete} from "react-icons/md";
 
 const Home =()=>{

@@ -22,7 +22,7 @@ const NoteModal = ({ isOpen, onClose, note, onSave }) => {
         }
 
         const payload = {title, description};
-        const config = {headers: {Authorization: `Bearer ${token}`}};
+        const config  = {headers: {Authorization: `Bearer ${token}`}};
         if(note) {
           const { data } = await axios.put(`/api/notes/${note._id}`, payload, config);
           onSave(data);
