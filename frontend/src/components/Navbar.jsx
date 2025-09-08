@@ -7,7 +7,7 @@ const Navbar = ({user ,setUser})=>{
 
     useEffect(()=>{
         if(!user) return;
-        const delay = setTime(()=>{
+        const delay = setTimeout(()=>{
             navigate(search.trim()?`/?search=${encodeURI(search)}`:"/");
         },500);
         return ()=>clearTimeout(delay);

@@ -7,7 +7,7 @@ import noteRoutes from "./routes/notes.routes.js";   // updated import
 import cors from "cors";
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(cors());
@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-app.listen(3000);
+app.listen(5000);
 connectDB();
 
 // app.listen(PORT, () => {

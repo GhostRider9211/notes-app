@@ -24,7 +24,7 @@ const Home =()=>{
             const search = searchParams.get("search")|| "";
 
             const {data} = await axios.get("/api/notes",{
-                headers:{Authorisation : `Bearer ${token}`},
+                headers:{Authorization : `Bearer ${token}`},
             });
 
             const filteredNotes = search

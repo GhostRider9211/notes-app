@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
