@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useRef,useState } from "react";
+
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -7,14 +7,14 @@ const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const emailRef = useRef(null);
 
-   useEffect(()=>{
+  useEffect(() => {
     emailRef.current?.focus();
-   },[]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,17 +25,17 @@ const Login = ({ setUser }) => {
         email,
         password,
       });
-      if(data?.token){
+      if (data?.token) {
         localStorage.setItem("token", data.token);
       }
       setUser(data);
       navigate("/");
     } catch (err) {
-      const msg = err?.response?.data?.message || "Server error"||err?.message;
+      const msg =
+        err?.response?.data?.message || "Server error" || err?.message;
       setError(msg);
-    }
-    finally{
-        setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -45,20 +45,29 @@ const Login = ({ setUser }) => {
 
       {/* error with aria-live so screen readers announce it */}
       {error && (
-        <p role="alert" aria-live="polite" className="text-red-500 mb-4 text-center">
+        <p
+          role="alert"
+          aria-live="polite"
+          className="text-red-500 mb-4 text-center"
+        >
           {error}
         </p>
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="email" className="block mb-1 text-sm font-medium">Email</label>
+          <label htmlFor="email" className="block mb-1 text-sm font-medium">
+            Email
+          </label>
           <input
             id="email"
             ref={emailRef}
             type="email"
             value={email}
-            onChange={(e) => { setEmail(e.target.value); setError(""); }}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError("");
+            }}
             placeholder="you@example.com"
             autoComplete="email"
             className="w-full px-3 py-2 border rounded-md outline-none focus:ring-2 focus:ring-blue-400"
@@ -67,12 +76,17 @@ const Login = ({ setUser }) => {
         </div>
 
         <div>
-          <label htmlFor="password" className="block mb-1 text-sm font-medium">Password</label>
+          <label htmlFor="password" className="block mb-1 text-sm font-medium">
+            Password
+          </label>
           <input
             id="password"
             type="password"
             value={password}
-            onChange={(e) => { setPassword(e.target.value); setError(""); }}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError("");
+            }}
             placeholder="Password"
             autoComplete="current-password"
             className="w-full px-3 py-2 border rounded-md outline-none focus:ring-2 focus:ring-blue-400"
