@@ -2,8 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { connectDB } from "./config/db.js";
-import userRoutes from "./routes/auth.routes.js";   // updated import
-import noteRoutes from "./routes/notes.routes.js";   // updated import
+import userRoutes from "./routes/auth.routes.js"; // updated import
+import noteRoutes from "./routes/notes.routes.js"; // updated import
 import cors from "cors";
 dotenv.config();
 
@@ -33,8 +33,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-app.listen(5000);
 connectDB();
 
 // app.listen(PORT, () => {
