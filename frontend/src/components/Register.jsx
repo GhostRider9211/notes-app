@@ -22,9 +22,12 @@ const Register = ({ setUser }) => {
         password,
       });
       const data = response.data;
-      localStorage.setItem('token',data.token);
+      localStorage.setItem("token", data.token);
       setUser(data);
-      navigate('/');
+      navigate("/");
+      setUsername("");
+      setEmail("");
+      setPassword("");
     } catch (error) {
       setError(error.response?.data?.message || "Server Error");
     } finally {
@@ -32,14 +35,10 @@ const Register = ({ setUser }) => {
     }
   };
 
-return (
+  return (
     <div className="container mx-auto max-w-md mt-10 p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold mb-6 text-center">Register</h2>
-      {error && (
-        <p className="text-red-500 mb-4 text-center">
-          {error}
-        </p>
-      )}
+      {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <input
@@ -48,6 +47,7 @@ return (
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
             required
+            autoComplete="Username"
             className="w-full px-3 py-2 border rounded-md outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
@@ -68,6 +68,7 @@ return (
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
+            autofill="new-password"
             className="w-full px-3 py-2 border rounded-md outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
@@ -76,23 +77,21 @@ return (
           disabled={loading}
           className={`w-full py-2 rounded-md text-white duration-100 ${
             loading
-              ? 'bg-blue-300 cursor-not-allowed'
-              : 'bg-blue-500 hover:bg-blue-700'
+              ? "bg-blue-300 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-700"
           }`}
         >
-          {loading ? 'Registering...' : 'Register'}
+          {loading ? "Registering..." : "Register"}
         </button>
       </form>
       <p className="mt-4 text-center">
-        Already have an account?{' '}
+        Already have an account?{" "}
         <Link to="/login" className="text-blue-600 hover:underline">
           Login
         </Link>
       </p>
     </div>
   );
-
-
 };
 
 export default Register;
