@@ -24,10 +24,10 @@ const NoteModal = ({ isOpen, onClose, note, onSave }) => {
         const payload = {title, description};
         const config  = {headers: {Authorization: `Bearer ${token}`}};
         if(note) {
-          const { data } = await axios.put(`/api/notes/${note._id}`, payload, config);
+          const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/api/notes/${note._id}`, payload, config);
           onSave(data);
         } else {
-          const { data } = await axios.post("/api/notes", payload, config);
+          const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/api/notes`, payload, config);
           onSave(data);
         }
         setTitle('');

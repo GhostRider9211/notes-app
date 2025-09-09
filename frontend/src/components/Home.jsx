@@ -23,7 +23,7 @@ const Home = () => {
       const searchParams = new URLSearchParams(location.search);
       const search = searchParams.get("search") || "";
 
-      const { data } = await axios.get("/api/notes", {
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/notes`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -73,7 +73,7 @@ const Home = () => {
         setError("No authentication token found. Please log in");
         return;
       }
-      await axios.delete(`/api/notes/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotes((prevNotes) =>
