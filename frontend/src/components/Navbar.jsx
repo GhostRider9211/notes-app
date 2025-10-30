@@ -71,16 +71,13 @@ const Navbar = ({ user, setUser }) => {
               />
             </div>
             <div className="flex items-center space-x-4">
-              {/* <span className="text-gray-800 dark:text-gray-200 font-medium">
-                {user?.username ?? "Guest"}
-              </span> */}
               <button
                 className="bg-red-600 text-white px-3 py-2 rounded-md hover:bg-red-700 transition-colors"
                 onClick={handleLogout}
               >
                 Logout
               </button>
-              <span className="-mr-16 ml-4"><DarkModeToggle /></span>
+              <DarkModeToggle />
             </div>
           </>
         )}
